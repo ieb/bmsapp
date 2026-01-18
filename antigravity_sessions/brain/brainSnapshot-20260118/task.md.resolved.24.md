@@ -1,0 +1,51 @@
+# Tasks
+
+- [x] Analyze Stitch export and requirements <!-- id: 0 -->
+    - [x] List files in `stitch` directory <!-- id: 1 -->
+    - [x] Read [stich/Conversation.md](file:///Users/ieb/timefields/antigravity/bmsapp/stich/Conversation.md) <!-- id: 2 -->
+    - [x] Analyze other export files (HTML/CSS) to understand UI/UX <!-- id: 3 -->
+- [x] Create Implementation Plan <!-- id: 4 -->
+    - [x] Define App Architecture <!-- id: 5 -->
+    - [x] List Features <!-- id: 6 -->
+    - [x] Plan Component/Screen Structure <!-- id: 7 -->
+- [x] Review plan with user <!-- id: 8 -->
+- [x] Initialize Flutter Project <!-- id: 9 -->
+    - [x] Run `flutter create bms_app` <!-- id: 10 -->
+    - [x] Add dependencies to [pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml) <!-- id: 11 -->
+    - [x] Create folder structure <!-- id: 12 -->
+- [x] Implement Core & Services <!-- id: 13 -->
+    - [x] Create [theme.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/theme.dart) <!-- id: 14 -->
+    - [x] Create [constants.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/constants.dart) <!-- id: 14b -->
+    - [x] Create [models.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart) <!-- id: 15a -->
+    - [x] Create [bms_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart) and implementations <!-- id: 15 -->
+- [x] Implement UI Screens <!-- id: 16 -->
+    - [x] main.dart & Providers <!-- id: 16a -->
+    - [x] Connection Screen <!-- id: 17 -->
+    - [x] Dashboard Screen <!-- id: 18 -->
+    - [x] Details Screen <!-- id: 19 -->
+    - [x] Settings Screen <!-- id: 20 -->
+- [x] Verification <!-- id: 21 -->
+    - [x] Run `flutter analyze` <!-- id: 22 -->
+    - [x] Build project (optional/platform dependent) <!-- id: 23 -->
+- [x] Troubleshooting <!-- id: 24 -->
+    - [x] Resolve `xcodebuild` error <!-- id: 25 -->
+    - [x] Fix empty Details Screen data <!-- id: 26 -->
+- [x] Implement Real Connectivity <!-- id: 27 -->
+    - [x] Create [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) (Scanning/Connecting) <!-- id: 28 -->
+    - [x] Create [seasmart_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/seasmart_service.dart) (HTTP Polling) <!-- id: 29 -->
+    - [x] Update [ConnectionScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/connection/connection_screen.dart#10-16) to use real services <!-- id: 30 -->
+    - [x] Implement JBD BLE Protocol (Parsing & Polling) <!-- id: 31 -->
+    - [x] Implement SeaSmart NMEA Protocol (PGN 127508, 130829) <!-- id: 32 -->
+- [x] Implement History & Trends <!-- id: 33 -->
+    - [x] Update [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#5-13) to store recent data points <!-- id: 34 -->
+    - [x] Create [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) with `fl_chart` <!-- id: 35 -->
+    - [x] Integrate [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) into [DashboardScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/dashboard/dashboard_screen.dart#12-18) <!-- id: 36 -->
+- [x] Refine History Screen Design <!-- id: 37 -->
+    - [x] Update [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) layout (Header, TimeSelector) <!-- id: 38 -->
+    - [x] Implement `LiveCurrentChart` with styling (Lime/Red colors, Grid) <!-- id: 39 -->
+    - [x] Implement [StatsGrid](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/dashboard/dashboard_screen.dart#215-284) (Total Charged/Load) <!-- id: 40 -->
+    - [x] Implement [ConnectionDetails](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#335-383) section <!-- id: 41 -->
+- [ ] Refactor BLE Protocol <!-- id: 42 -->
+    - [ ] Update [BmsData](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart#1-57) model with all JBD fields <!-- id: 43 -->
+    - [ ] Update [BleBmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart#8-277) to parse full 0x03 packet <!-- id: 44 -->
+    - [ ] Verify offsets and document discrepancies <!-- id: 45 -->

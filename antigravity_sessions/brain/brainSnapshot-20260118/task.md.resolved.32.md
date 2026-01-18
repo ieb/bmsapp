@@ -1,0 +1,79 @@
+# Tasks
+
+- [x] Analyze Stitch export and requirements <!-- id: 0 -->
+    - [x] List files in `stitch` directory <!-- id: 1 -->
+    - [x] Read [stich/Conversation.md](file:///Users/ieb/timefields/antigravity/bmsapp/stich/Conversation.md) <!-- id: 2 -->
+    - [x] Analyze other export files (HTML/CSS) to understand UI/UX <!-- id: 3 -->
+- [x] Create Implementation Plan <!-- id: 4 -->
+    - [x] Define App Architecture <!-- id: 5 -->
+    - [x] List Features <!-- id: 6 -->
+    - [x] Plan Component/Screen Structure <!-- id: 7 -->
+- [x] Review plan with user <!-- id: 8 -->
+- [x] Initialize Flutter Project <!-- id: 9 -->
+    - [x] Run `flutter create bms_app` <!-- id: 10 -->
+    - [x] Add dependencies to [pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml) <!-- id: 11 -->
+    - [x] Create folder structure <!-- id: 12 -->
+- [x] Implement Core & Services <!-- id: 13 -->
+    - [x] Create `theme.dart` <!-- id: 14 -->
+    - [x] Create `constants.dart` <!-- id: 14b -->
+    - [x] Create [models.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart) <!-- id: 15a -->
+    - [x] Create [bms_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart) and implementations <!-- id: 15 -->
+- [x] Implement UI Screens <!-- id: 16 -->
+    - [x] main.dart & Providers <!-- id: 16a -->
+    - [x] Connection Screen <!-- id: 17 -->
+    - [x] Dashboard Screen <!-- id: 18 -->
+    - [x] Details Screen <!-- id: 19 -->
+    - [x] Settings Screen <!-- id: 20 -->
+- [x] Verification <!-- id: 21 -->
+    - [x] Run `flutter analyze` <!-- id: 22 -->
+    - [x] Build project (optional/platform dependent) <!-- id: 23 -->
+- [x] Troubleshooting <!-- id: 24 -->
+    - [x] Resolve `xcodebuild` error <!-- id: 25 -->
+    - [x] Fix empty Details Screen data <!-- id: 26 -->
+- [x] Implement Real Connectivity <!-- id: 27 -->
+    - [x] Create [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) (Scanning/Connecting) <!-- id: 28 -->
+    - [x] Create [seasmart_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/seasmart_service.dart) (HTTP Polling) <!-- id: 29 -->
+    - [x] Update [ConnectionScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/connection/connection_screen.dart#11-17) to use real services <!-- id: 30 -->
+    - [x] Implement JBD BLE Protocol (Parsing & Polling) <!-- id: 31 -->
+    - [x] Implement SeaSmart NMEA Protocol (PGN 127508, 130829) <!-- id: 32 -->
+- [x] Implement History & Trends <!-- id: 33 -->
+    - [x] Update [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#6-18) to store recent data points <!-- id: 34 -->
+    - [x] Create [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) with `fl_chart` <!-- id: 35 -->
+    - [x] Integrate [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) into [DashboardScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/dashboard/dashboard_screen.dart#13-19) <!-- id: 36 -->
+- [x] Refine History Screen Design <!-- id: 37 -->
+    - [x] Update [TrendsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#9-15) layout (Header, TimeSelector) <!-- id: 38 -->
+    - [x] Implement `LiveCurrentChart` with styling (Lime/Red colors, Grid) <!-- id: 39 -->
+    - [x] Implement [StatsGrid](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#234-261) (Total Charged/Load) <!-- id: 40 -->
+    - [x] Implement [ConnectionDetails](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/history/trends_screen.dart#335-383) section <!-- id: 41 -->
+- [x] Refactor BLE Protocol <!-- id: 42 -->
+    - [x] Update [BmsData](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart#1-140) model with all JBD fields <!-- id: 43 -->
+    - [x] Update [BleBmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart#10-420) to parse full 0x03 packet <!-- id: 44 -->
+    - [x] Verify offsets and document discrepancies <!-- id: 45 -->
+- [x] UI Verification & Polish <!-- id: 46 -->
+    - [x] Run in Chrome & Verify Screens <!-- id: 47 -->
+    - [x] Compare with Stitch Designs <!-- id: 48 -->
+    - [x] Create Fix Plan (Updated tab order) <!-- id: 49 -->
+    - [x] Refine Dashboard to match `battery_dashboard_2` <!-- id: 50 -->
+    - [x] Fix click issues by using correct Viewport (Pixel 7a) <!-- id: 51 -->
+- [x] Implement Alerts & Event Log UI <!-- id: 52 -->
+    - [x] Create [LogEntry](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart#150-167) and `LogSeverity` models <!-- id: 53 -->
+    - [x] Update [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#6-18) with logs stream & mock logic <!-- id: 54 -->
+    - [x] Implement [AlertsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/alerts/alerts_screen.dart#7-13) with ڈیزائن-matching styling <!-- id: 55 -->
+    - [x] Integrate [AlertsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/alerts/alerts_screen.dart#7-13) into navigation tabs <!-- id: 56 -->
+- [x] Improve Hit Areas & Drawer <!-- id: 57 -->
+    - [x] Implement Hamburger Menu (Drawer) <!-- id: 58 -->
+    - [x] Improve Nav Item hit areas with `InkWell` <!-- id: 59 -->
+    - [x] Improve Filter Bar hit areas (no gaps) <!-- id: 60 -->
+    - [x] Verify interactions with browser subagent gap-click test <!-- id: 61 -->
+- [x] Implement Stats Logic & Persistence <!-- id: 62 -->
+    - [x] Update [BmsData](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart#1-140) with `totalChargedAh` and `totalDischargedAh` <!-- id: 63 -->
+    - [x] Create [PersistenceService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/persistence_service.dart#5-69) using `shared_preferences` <!-- id: 64 -->
+    - [x] Implement Ah accumulation logic in all BMS services <!-- id: 65 -->
+    - [x] Integrate persistence into [main.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/main.dart) and [ConnectionScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/connection/connection_screen.dart#11-17) <!-- id: 66 -->
+    - [x] Add "Reset Statistics" functionality in [SettingsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/settings/settings_screen.dart#8-14) <!-- id: 67 -->
+- [x] Implement Editable Protection Limits <!-- id: 68 -->
+    - [x] Add `updateSettings` methods to [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#6-18) and implementations <!-- id: 69 -->
+    - [x] Update [PersistenceService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/persistence_service.dart#5-69) to store protection limits & Dark Mode <!-- id: 70 -->
+    - [x] Refactor [SettingsScreen](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/settings/settings_screen.dart#8-14) to use interactive input fields (TextFields) <!-- id: 71 -->
+    - [x] Implement "Save" feedback and validation for limits <!-- id: 72 -->
+    - [x] Verify persistence across app restarts <!-- id: 73 -->
