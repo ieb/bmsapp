@@ -24,23 +24,23 @@ Initially I started with Gemini 2.5 Pro (High) with the agent in planning mode. 
 
 Initial planning and implementation     with Gemini 2.5 Pro
 
-* [walkthrough.md.resolved.0.md](brainSnapshot-20260118/walkthrough.md.resolved.0.md)
-* [walkthrough.md.resolved.1.md](brainSnapshot-20260118/walkthrough.md.resolved.1.md)
-* [walkthrough.md.resolved.2.md](brainSnapshot-20260118/walkthrough.md.resolved.2.md)
-* [walkthrough.md.resolved.3.md](brainSnapshot-20260118/walkthrough.md.resolved.3.md)
-* [walkthrough.md.resolved.4.md](brainSnapshot-20260118/walkthrough.md.resolved.4.md)
-* [walkthrough.md.resolved.5.md](brainSnapshot-20260118/walkthrough.md.resolved.5.md)
-* [walkthrough.md.resolved.6.md](brainSnapshot-20260118/walkthrough.md.resolved.6.md)
-* [walkthrough.md.resolved.7.md](brainSnapshot-20260118/walkthrough.md.resolved.7.md)
+* [walkthrough.md.resolved.0.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.0.md)
+* [walkthrough.md.resolved.1.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.1.md)
+* [walkthrough.md.resolved.2.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.2.md)
+* [walkthrough.md.resolved.3.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.3.md)
+* [walkthrough.md.resolved.4.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.4.md)
+* [walkthrough.md.resolved.5.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.5.md)
+* [walkthrough.md.resolved.6.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.6.md)
+* [walkthrough.md.resolved.7.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.7.md)
 
 Swithed to Flash 3 and started to let the agent drive chrome.
 
-* [walkthrough.md.resolved.8.md](brainSnapshot-20260118/walkthrough.md.resolved.8.md)
-* [walkthrough.md.resolved.9.md](brainSnapshot-20260118/walkthrough.md.resolved.9.md)
-* [walkthrough.md.resolved.10.md](brainSnapshot-20260118/walkthrough.md.resolved.10.md)
-* [walkthrough.md.resolved.11.md](brainSnapshot-20260118/walkthrough.md.resolved.11.md)
-* [walkthrough.md.resolved.12.md](brainSnapshot-20260118/walkthrough.md.resolved.12.md)
-* [walkthrough.md.resolved.13.md](brainSnapshot-20260118/walkthrough.md.resolved.13.md)
+* [walkthrough.md.resolved.8.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.8.md)
+* [walkthrough.md.resolved.9.md](ant    igravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.9.md)
+* [walkthrough.md.resolved.10.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.10.md)
+* [walkthrough.md.resolved.11.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.11.md)
+* [walkthrough.md.resolved.12.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.12.md)
+* [walkthrough.md.resolved.13.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.13.md)
 
 ## Result
 
