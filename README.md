@@ -36,7 +36,7 @@ Initial planning and implementation     with Gemini 2.5 Pro
 Swithed to Flash 3 and started to let the agent drive chrome.
 
 * [walkthrough.md.resolved.8.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.8.md)
-* [walkthrough.md.resolved.9.md](ant    igravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.9.md)
+* [walkthrough.md.resolved.9.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.9.md)
 * [walkthrough.md.resolved.10.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.10.md)
 * [walkthrough.md.resolved.11.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.11.md)
 * [walkthrough.md.resolved.12.md](antigravity_sessions/brain/brainSnapshot-20260118/walkthrough.md.resolved.12.md)
