@@ -2,7 +2,7 @@
 
 - [x] Analyze Stitch export and requirements <!-- id: 0 -->
     - [x] List files in `stitch` directory <!-- id: 1 -->
-    - [x] Read [stich/Conversation.md](file:///Users/ieb/timefields/antigravity/bmsapp/stich/Conversation.md) <!-- id: 2 -->
+    - [x] Read [stich/Conversation.md](stich/Conversation.md) <!-- id: 2 -->
     - [x] Analyze other export files (HTML/CSS) to understand UI/UX <!-- id: 3 -->
 - [x] Create Implementation Plan <!-- id: 4 -->
     - [x] Define App Architecture <!-- id: 5 -->

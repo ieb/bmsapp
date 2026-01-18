@@ -20,13 +20,13 @@ The convestation with Stitch can be found  in @[stich/Conversation.md]
 
 *Edited relevant file*
 
-*Listed directory [stich](file:///Users/ieb/timefields/antigravity/bmsapp/stich) *
+*Listed directory [stich](stich) *
 
-*Viewed [Conversation.md](file:///Users/ieb/timefields/antigravity/bmsapp/stich/Conversation.md) *
+*Viewed [Conversation.md](stich/Conversation.md) *
 
-*Listed directory [stitch_connection_manager](file:///Users/ieb/timefields/antigravity/bmsapp/stich/stitch_connection_manager) *
+*Listed directory [stitch_connection_manager](stich/stitch_connection_manager) *
 
-*Listed directory [battery_dashboard_1](file:///Users/ieb/timefields/antigravity/bmsapp/stich/stitch_connection_manager/battery_dashboard_1) *
+*Listed directory [battery_dashboard_1](stich/stitch_connection_manager/battery_dashboard_1) *
 
 *Edited relevant file*
 
@@ -48,7 +48,7 @@ try sourcing ~/.profile which will add Flutter to the path
 
 *Checked command status*
 
-*Viewed [pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml) *
+*Viewed [pubspec.yaml](bms_app/pubspec.yaml) *
 
 *Edited relevant file*
 
@@ -78,9 +78,9 @@ This works for me.
 
 *Checked command status*
 
-*Read URL content from /Users/ieb/timefields/antigravity/bmsapp/stich/stitch_connection_manager/battery_dashboard_1/code.html *
+*Read URL content from stich/stitch_connection_manager/battery_dashboard_1/code.html *
 
-*Viewed [code.html](file:///Users/ieb/timefields/antigravity/bmsapp/stich/stitch_connection_manager/battery_dashboard_1/code.html) *
+*Viewed [code.html](stich/stitch_connection_manager/battery_dashboard_1/code.html) *
 
 *Edited relevant file*
 
@@ -255,9 +255,9 @@ Looks good, please continue to the next step of the plan
 
 *Edited relevant file*
 
-*Viewed [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) *
+*Viewed [ble_service.dart](bms_app/lib/services/ble_service.dart) *
 
-*Viewed [pubspec.lock](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.lock) *
+*Viewed [pubspec.lock](bms_app/pubspec.lock) *
 
 *Edited relevant file*
 
@@ -279,7 +279,7 @@ Looks good, please continue to the next step of the plan
 
 *Edited relevant file*
 
-*Viewed [pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml) *
+*Viewed [pubspec.yaml](bms_app/pubspec.yaml) *
 
 *User accepted the command `echo "Check completed"`*
 
@@ -303,7 +303,7 @@ Looks good, please continue to the next step of the plan
 
 *Checked command status*
 
-*Viewed [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) *
+*Viewed [ble_service.dart](bms_app/lib/services/ble_service.dart) *
 
 *User accepted the command `. ~/.profile && cd bms_app && flutter analyze`*
 
@@ -315,7 +315,7 @@ Looks good, please continue to the next step of the plan
 
 you can find an example of the BLE protocol in https://github.com/ieb/jdbLifePO4BMS specifically the code that handles interaction with the ble is here https://github.com/ieb/jdbLifePO4BMS/blob/main/bmsblereader.js
 
-*Viewed [task.md](file:///Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/task.md) *
+*Viewed [task.md](antigravity_sessions/brain/brainSnapshot-20260118/task.md) *
 
 *Read URL content from /ieb/jdbLifePO4BMS/main/bmsblereader.js *
 
@@ -331,7 +331,7 @@ you can find an example of the BLE protocol in https://github.com/ieb/jdbLifePO4
 
 *Checked command status*
 
-*Viewed [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) *
+*Viewed [ble_service.dart](bms_app/lib/services/ble_service.dart) *
 
 *Edited relevant file*
 
@@ -339,7 +339,7 @@ you can find an example of the BLE protocol in https://github.com/ieb/jdbLifePO4
 
 *Checked command status*
 
-*Viewed [ble_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/ble_service.dart) *
+*Viewed [ble_service.dart](bms_app/lib/services/ble_service.dart) *
 
 *Edited relevant file*
 
@@ -363,7 +363,7 @@ The protocol for the http seasmart stream can be found here https://github.com/i
 
 *Read URL content from /ieb/N2KLifePo4/main/bmsseasmartreader.js *
 
-*Viewed [implementation_plan.md](file:///Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/implementation_plan.md) *
+*Viewed [implementation_plan.md](antigravity_sessions/brain/brainSnapshot-20260118/implementation_plan.md) *
 
 *Viewed content chunk*
 
@@ -377,13 +377,13 @@ The protocol for the http seasmart stream can be found here https://github.com/i
 
 *User accepted the command `. ~/.profile && cd bms_app && flutter analyze`*
 
-*Viewed [seasmart_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/seasmart_service.dart) *
+*Viewed [seasmart_service.dart](bms_app/lib/services/seasmart_service.dart) *
 
 *Edited relevant file*
 
 *User accepted the command `. ~/.profile && cd bms_app && flutter analyze`*
 
-*Viewed [task.md](file:///Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/task.md) *
+*Viewed [task.md](antigravity_sessions/brain/brainSnapshot-20260118/task.md) *
 
 *Edited relevant file*
 

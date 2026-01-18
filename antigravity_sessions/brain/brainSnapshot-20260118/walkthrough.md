@@ -24,7 +24,7 @@ I have successfully built the initial version of the BMS Monitor App using Flutt
 -   **HTTP**: "Connect via HTTP" button wires up `SeaSmartService`.
 -   **BLE**: "Scan & Connect BLE" shows a live list of Bluetooth devices.
 -   **Mock**: "Connect Mock (Test)" button for simulating data without hardware.
-![Connection Screen](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_connection_1768725055295.png)
+![Connection Screen](screen_connection_1768725055295.png)
 
 #### **Dashboard Screen (Refined)**
 -   **Design**: Updated to match `battery_dashboard_2` design.
@@ -33,23 +33,23 @@ I have successfully built the initial version of the BMS Monitor App using Flutt
 -   **Metrics**: Voltage, Current, and full-width Real-Time Power cards.
 -   **Footer**: Cycle Count and Uptime grid.
 ````carousel
-![Dashboard Top](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_dashboard_mobile_1768725935972.png)
+![Dashboard Top](screen_dashboard_mobile_1768725935972.png)
 <!-- slide -->
-![Dashboard Bottom](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_dashboard_bottom_fixed_1768726121409.png)
+![Dashboard Bottom](screen_dashboard_bottom_fixed_1768726121409.png)
 ````
 
 #### **History Screen (Trends)**
 -   **Design**: Pixel-perfect implementation of "Current & Load Trends".
 -   **Features**: Time range selector, Live Current chart (Charging/Discharging colors), Stats Grid.
-![Trends Screen](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_trends_final_1768725313783.png)
+![Trends Screen](screen_trends_final_1768725313783.png)
 
 #### **Settings & Details**
 -   **Cell Details**: Grid view of cell voltages.
 -   **Settings**: Placeholder implementation showing protection limits.
 ````carousel
-![Cell Details](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_cells_1768725146758.png)
+![Cell Details](screen_cells_1768725146758.png)
 <!-- slide -->
-![Settings](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_settings_1768725184641.png)
+![Settings](screen_settings_1768725184641.png)
 ````
 
 ## Verification
@@ -63,14 +63,14 @@ Ran `flutter analyze` to ensure code quality.
 -   **Models**: Created `LogEntry` and `LogSeverity` to track system notifications.
 -   **Service Integration**: `BmsService` now maintains a stream of events.
 -   **UX Refinement**: Added semantic colors (Critical: Red, Warning: Orange, Info: Blue) to match design cards.
-![Alerts Screen](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/alerts_screen_initial_1768727107074.png)
+![Alerts Screen](alerts_screen_initial_1768727107074.png)
 
 ### 4. **Interaction Improvments (Ergonomics)**
 -   **Hamburger Menu (Drawer)**: Fully implemented the drawer for primary navigation and tool access.
 -   **Optimized Hit Areas**: Replaced simple `GestureDetector` with `Material` + `InkWell` for all navigation and filter elements.
     -   **Result**: Zero gaps between buttons.
     -   **Verification**: Gap-click test passed in Pixel 7a viewport.
-![Drawer & Nav Test](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/screen_drawer_final_1768727089426.png)
+![Drawer & Nav Test](screen_drawer_final_1768727089426.png)
 
 ## Verification
 -   **Browser Subagent**: Verified all navigation flows and interaction boundaries.
@@ -81,21 +81,21 @@ Ran `flutter analyze` to ensure code quality.
 -   **Shared Preferences**: Created `PersistenceService` to save stats, logs, and settings across app restarts.
 -   **Maintenance Tools**: Added a "Reset Statistics" feature in the Settings screen with a safety confirmation dialog.
 -   **Cross-Service Support**: Integrated persistence and Ah calculation into `MockBmsService`, `BleBmsService`, and `SeaSmartService`.
-![Stats Reset SnackBar](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/snackbar_check_1768727671163.png)
+![Stats Reset SnackBar](snackbar_check_1768727671163.png)
 
 ### 6. **Editable Protection Limits & Dark Mode**
 -   **Interactive Settings**: Protection limits (OVP, UVP, OTP) are now editable via TextFields in the Settings screen.
 -   **Real-time Synchronization**: Changes are broadcast to the BMS data stream and audited in the system log.
 -   **Dark Mode Persistence**: The app now remembers your theme preference across restarts.
 -   **Mock Service Reliability**: Fixed a bug where mock data updates would overwrite user-defined protection limits with defaults.
-![Settings Final Success](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/settings_final_success_1768729896782.png)
+![Settings Final Success](settings_final_success_1768729896782.png)
 
 ### 7. **Cloud Integration (Skeleton)**
 -   **Remote Monitoring**: Foundation laid for telemetry uploads to remote endpoints.
 -   **Telemetry Sync**: Background loop implemented to periodically upload battery data (Voltage, Current, SoC, etc.).
 -   **Configurable Gateway**: Users can define custom API Endpoints and API Keys in the Settings screen.
 -   **Connectivity Testing**: Integrated connection test tool with real-time feedback.
-![Cloud Settings Verified](/Users/ieb/.gemini/antigravity/brain/e07c8d49-87ce-4ccd-96b5-16d28da947e5/cloud_settings_verified_1768730834905.png)
+![Cloud Settings Verified](cloud_settings_verified_1768730834905.png)
 
 ## Verification
 -   **Telemetry Sync**: Verified periodic uploads in browser console logs during the sync loop.

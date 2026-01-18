@@ -2,7 +2,7 @@
 
 - [x] Analyze Stitch export and requirements <!-- id: 0 -->
     - [x] List files in `stitch` directory <!-- id: 1 -->
-    - [x] Read [stich/Conversation.md](file:///Users/ieb/timefields/antigravity/bmsapp/stich/Conversation.md) <!-- id: 2 -->
+    - [x] Read [stich/Conversation.md](stich/Conversation.md) <!-- id: 2 -->
     - [x] Analyze other export files (HTML/CSS) to understand UI/UX <!-- id: 3 -->
 - [x] Create Implementation Plan <!-- id: 4 -->
     - [x] Define App Architecture <!-- id: 5 -->
@@ -11,7 +11,7 @@
 - [x] Review plan with user <!-- id: 8 -->
 - [ ] Initialize Flutter Project <!-- id: 9 -->
     - [x] Run `flutter create bms_app` <!-- id: 10 -->
-    - [ ] Add dependencies to [pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml) <!-- id: 11 -->
+    - [ ] Add dependencies to [pubspec.yaml](bms_app/pubspec.yaml) <!-- id: 11 -->
     - [ ] Create folder structure <!-- id: 12 -->
 - [ ] Implement Core & Services <!-- id: 13 -->
     - [ ] Create `theme.dart` <!-- id: 14 -->

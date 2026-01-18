@@ -45,38 +45,38 @@ graph TD
 *   `google_fonts`: For typography matching the design.
 
 ### [Phase 1: Project Initialization]
-#### [NEW] [bms_app/pubspec.yaml](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/pubspec.yaml)
+#### [NEW] [bms_app/pubspec.yaml](bms_app/pubspec.yaml)
 - Create new Flutter project `flutter create bms_app`.
 - Add dependencies.
 
 ### [Phase 2: Core & Services]
-#### [NEW] [bms_app/lib/core/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/)
+#### [NEW] [bms_app/lib/core/](bms_app/lib/core/)
 - `theme.dart`: Define colors and text styles based on Stitch HTML export.
 - `constants.dart`: UUIDs, default IP addresses.
 
-#### [NEW] [bms_app/lib/services/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/)
+#### [NEW] [bms_app/lib/services/](bms_app/lib/services/)
 - `bms_service.dart`: Abstract base class for BMS data.
 - `ble_service.dart`: Implementation using `flutter_blue_plus`.
 - `seasmart_service.dart`: Implementation using `http`.
 - `mock_service.dart`: Fake data generator for UI development.
 
 ### [Phase 3: Connection Manager]
-#### [NEW] [bms_app/lib/features/connection/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/connection/)
+#### [NEW] [bms_app/lib/features/connection/](bms_app/lib/features/connection/)
 - `connection_screen.dart`: UI to scan BLE or input IP.
 - `connection_provider.dart`: Logic to handle connection state.
 
 ### [Phase 4: Dashboard & Navigation]
-#### [NEW] [bms_app/lib/features/dashboard/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/dashboard/)
+#### [NEW] [bms_app/lib/features/dashboard/](bms_app/lib/features/dashboard/)
 - `dashboard_screen.dart`: Main gauge (SoC), V/I/W metrics.
 - Implement bottom navigation or drawer to access other screens.
 
 ### [Phase 5: Details & Trends]
-#### [NEW] [bms_app/lib/features/details/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/details/)
+#### [NEW] [bms_app/lib/features/details/](bms_app/lib/features/details/)
 - `cell_details_screen.dart`: List of cell voltages.
 - `trends_screen.dart`: Charts for Voltage and Current history.
 
 ### [Phase 6: Settings & Debug]
-#### [NEW] [bms_app/lib/features/settings/](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/settings/)
+#### [NEW] [bms_app/lib/features/settings/](bms_app/lib/features/settings/)
 - `settings_screen.dart`: BMS thresholds.
 - `debug_screen.dart`: Hex console.
 

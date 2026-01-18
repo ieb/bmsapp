@@ -6,8 +6,8 @@ I have successfully built the initial version of the BMS Monitor App using Flutt
 
 ### 1. **Core Architecture**
 -   **Flutter Project**: Created `bms_app` with a structured feature-based folder layout.
--   **Theme**: Implemented [AppTheme](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/theme.dart#4-54) using the specific color palette from Stitch's HTML export (`#107070` Primary, Dark Mode support).
--   **Services**: Created [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#5-11) abstraction and a [MockBmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#12-66) to simulate battery data for development without hardware.
+-   **Theme**: Implemented [AppTheme](bms_app/lib/core/theme.dart#4-54) using the specific color palette from Stitch's HTML export (`#107070` Primary, Dark Mode support).
+-   **Services**: Created [BmsService](bms_app/lib/services/bms_service.dart#5-11) abstraction and a [MockBmsService](bms_app/lib/services/bms_service.dart#12-66) to simulate battery data for development without hardware.
 
 ### 2. **Screens**
 

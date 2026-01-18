@@ -11,23 +11,23 @@ This plan outlines the steps to implement the foundation for remote battery moni
 
 ### [Component] Services
 
-#### [NEW] [cloud_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/cloud_service.dart)
+#### [NEW] [cloud_service.dart](bms_app/lib/services/cloud_service.dart)
 - Create `CloudService` class to handle http communication with a remote telemetry endpoint.
 - Implement `uploadTelemetry(BmsData data)` method with logging for observability.
 - Implement a `testConnection(String endpoint, String apiKey)` method.
 
-#### [MODIFY] [persistence_service.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/persistence_service.dart)
+#### [MODIFY] [persistence_service.dart](bms_app/lib/services/persistence_service.dart)
 - Add keys: `_keyCloudEnabled`, `_keyCloudEndpoint`, `_keyCloudApiKey`.
 - Implement getters and setters for these keys.
 
-#### [MODIFY] [service_manager.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/service_manager.dart)
+#### [MODIFY] [service_manager.dart](bms_app/lib/services/service_manager.dart)
 - Integrate `CloudService` into the constructor.
 - Add `_cloudSyncTimer` to handle periodic uploads (e.g., every 30 seconds).
-- Listen to the active [BmsService](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/services/bms_service.dart#6-18) stream and store the latest [BmsData](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/core/models.dart#1-140) for the sync loop.
+- Listen to the active [BmsService](bms_app/lib/services/bms_service.dart#6-18) stream and store the latest [BmsData](bms_app/lib/core/models.dart#1-140) for the sync loop.
 
 ### [Component] Features
 
-#### [MODIFY] [settings_screen.dart](file:///Users/ieb/timefields/antigravity/bmsapp/bms_app/lib/features/settings/settings_screen.dart)
+#### [MODIFY] [settings_screen.dart](bms_app/lib/features/settings/settings_screen.dart)
 - Add a "Cloud Integration" `GlassCard` (before Maintenance).
 - Include `SwitchListTile` for "Enable Sync".
 - Add `TextField` sections for "Endpoint URL" and "API Key".
