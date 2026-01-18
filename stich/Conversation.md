@@ -1,5 +1,9 @@
 
 
+https://stitch.withgoogle.com/projects/11141352492501134303
+
+
+
 Me: 
     I want to design an mobile app that will montor the state of a LiFePo4 battey pack controlled by a BMS. I am interested in seeingthe overall state of the battery including state of charge, current and voltage. I am also interested in being able to see the detail including internal temperatures and individual cell voltages. The connection to the battery pack with allow connection to the BMS direct over BLE, but also a connection to a stream of Can bus messages over http using the Seasmary protcol. Although these are low level implementation details please include UI to control both types of connection. Feel free to ask me anything where is is not clear.
 
