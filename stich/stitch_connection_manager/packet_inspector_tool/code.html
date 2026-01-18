@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Packet Inspector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00ff55",
+                        "background-light": "#f1f2f4",
+                        "background-dark": "#16181B",
+                        "surface": "#23262B",
+                        "border-muted": "#3A3F45",
+                        "segment-header": "#FF0000",
+                        "segment-length": "#00A3FF",
+                        "segment-command": "#D9FF00",
+                        "segment-data": "#FF8C00",
+                        "segment-crc": "#B200FF",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .monospaced-hex {
+            letter-spacing: -0.05em;
+            font-variant-numeric: tabular-nums;
+        }
+        .inner-glow-focus:focus-within {
+            box-shadow: inset 0 0 10px rgba(0, 255, 85, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-border-muted px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer">arrow_back_ios</span>
+<h1 class="text-lg font-bold tracking-tight uppercase">Packet Inspector</h1>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">history</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">settings</span>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-12">
+<!-- Input Section -->
+<section class="p-4 space-y-4">
+<div class="flex justify-between items-end">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Input</h3>
+<button class="text-[10px] font-bold text-primary flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-sm">content_paste</span> Paste Clipboard
+                </button>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-surface border border-border-muted rounded-lg p-4 text-primary font-medium placeholder:text-slate-600 focus:ring-1 focus:ring-primary focus:border-primary transition-all min-h-[120px] resize-none monospaced-hex" placeholder="e.g. AA 55 0A 91 0D 42 EF">AA 55 0A 91 0D 42 EF</textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm cursor-pointer hover:text-white">close</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-extrabold py-4 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.98] uppercase tracking-tighter text-lg">
+<span class="material-symbols-outlined font-bold">terminal</span>
+                Decode Packet
+            </button>
+</section>
+<!-- Visual Highlighter -->
+<section class="px-4 py-2">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Byte Segmentation</h3>
+<div class="bg-surface border border-border-muted rounded-lg p-4 flex flex-wrap gap-2 monospaced-hex font-bold text-lg">
+<span class="px-1 rounded bg-segment-header/20 text-segment-header border border-segment-header/30">AA 55</span>
+<span class="px-1 rounded bg-segment-length/20 text-segment-length border border-segment-length/30">0A</span>
+<span class="px-1 rounded bg-segment-command/20 text-segment-command border border-segment-command/30">91</span>
+<span class="px-1 rounded bg-segment-data/20 text-segment-data border border-segment-data/30">0D 42</span>
+<span class="px-1 rounded bg-segment-crc/20 text-segment-crc border border-segment-crc/30">EF</span>
+</div>
+</section>
+<!-- Parsed Structure Table -->
+<section class="mt-6 px-4">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 px-1">Parsed Structure</h3>
+<div class="space-y-2">
+<!-- Header Row -->
+<div class="bg-surface border border-border-muted rounded flex items-stretch overflow-hidden group">
+<div class="w-1.5 bg-segment-header"></div>
+<div class="flex-1 grid grid-cols-4 items-center p-3">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Index</span>
+<span class="text-sm font-medium">00-01</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Segment</span>
+<span class="text-sm font-bold text-segment-header">Header</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Hex</span>
+<span class="text-sm font-medium monospaced-hex">AA 55</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-500 font-bold uppercase text-right">Decoded</span>
+<span class="text-xs font-bold text-white truncate max-w-full">Start Frame</span>
+</div>
+</div>
+</div>
+<!-- Length Row -->
+<div class="bg-surface border border-border-muted rounded flex items-stretch overflow-hidden group">
+<div class="w-1.5 bg-segment-length"></div>
+<div class="flex-1 grid grid-cols-4 items-center p-3">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Index</span>
+<span class="text-sm font-medium">02</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Segment</span>
+<span class="text-sm font-bold text-segment-length">Length</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Hex</span>
+<span class="text-sm font-medium monospaced-hex">0A</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-500 font-bold uppercase text-right">Decoded</span>
+<span class="text-xs font-bold text-white">10 Bytes</span>
+</div>
+</div>
+</div>
+<!-- Command Row -->
+<div class="bg-surface border border-border-muted rounded flex items-stretch overflow-hidden group">
+<div class="w-1.5 bg-segment-command"></div>
+<div class="flex-1 grid grid-cols-4 items-center p-3">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Index</span>
+<span class="text-sm font-medium">03</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Segment</span>
+<span class="text-sm font-bold text-segment-command">CMD</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Hex</span>
+<span class="text-sm font-medium monospaced-hex">91</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-500 font-bold uppercase text-right">Decoded</span>
+<span class="text-xs font-bold text-white">Read Volts</span>
+</div>
+</div>
+</div>
+<!-- Data Row -->
+<div class="bg-surface border border-border-muted rounded flex items-stretch overflow-hidden group ring-1 ring-primary/30">
+<div class="w-1.5 bg-segment-data"></div>
+<div class="flex-1 grid grid-cols-4 items-center p-3">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Index</span>
+<span class="text-sm font-medium">04-05</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Segment</span>
+<span class="text-sm font-bold text-segment-data">Data</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Hex</span>
+<span class="text-sm font-medium monospaced-hex">0D 42</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-500 font-bold uppercase text-right">Decoded</span>
+<span class="text-sm font-bold text-primary">3.394V</span>
+</div>
+</div>
+</div>
+<!-- CRC Row -->
+<div class="bg-surface border border-border-muted rounded flex items-stretch overflow-hidden group">
+<div class="w-1.5 bg-segment-crc"></div>
+<div class="flex-1 grid grid-cols-4 items-center p-3">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Index</span>
+<span class="text-sm font-medium">06</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Segment</span>
+<span class="text-sm font-bold text-segment-crc">CRC</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Hex</span>
+<span class="text-sm font-medium monospaced-hex">EF</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-slate-500 font-bold uppercase text-right">Decoded</span>
+<div class="flex items-center gap-1 text-emerald-400">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="text-xs font-bold uppercase">Valid</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Utility Footer -->
+<section class="mt-8 px-4 flex gap-3">
+<button class="flex-1 bg-surface border border-border-muted py-3 rounded text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy CSV
+            </button>
+<button class="flex-1 bg-surface border border-border-muted py-3 rounded text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">share</span> Export PDF
+            </button>
+</section>
+</main>
+<!-- App Bottom Spacer for iOS -->
+<div class="h-8"></div>
+</body></html>

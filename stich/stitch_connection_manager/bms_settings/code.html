@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BMS Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007e8c",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2123",
+                        "card-dark": "#1a2e30",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(26, 46, 48, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .status-dot {
+            box-shadow: 0 0 8px #007e8c;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-32">
+<!-- TopAppBar -->
+<nav class="sticky top-0 z-50 glass-panel px-4 py-4 flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer">arrow_back_ios</span>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold tracking-tight">BMS Settings</h1>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse status-dot"></div>
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Connected: BLE_4.2_LFP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">bluetooth_connected</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-slate-400">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</div>
+</nav>
+<main class="max-w-md mx-auto px-4 pt-6 space-y-8">
+<!-- Voltage Protection Section -->
+<section>
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-xs font-bold tracking-[0.2em] text-primary uppercase">Voltage Protection</h3>
+<span class="text-[10px] text-slate-500 font-medium">UNIT: VOLTS (V)</span>
+</div>
+<div class="space-y-3">
+<!-- Editable Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-card-dark border border-black/5 dark:border-white/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<p class="text-sm font-bold">Over-voltage</p>
+<p class="text-xs text-slate-500">Cell cutoff limit</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-16 h-10 text-center bg-black/5 dark:bg-black/20 border-none rounded-lg font-bold text-primary focus:ring-1 focus:ring-primary" type="text" value="3.65"/>
+</div>
+</div>
+<!-- Editable Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-card-dark border border-black/5 dark:border-white/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">battery_low</span>
+</div>
+<div>
+<p class="text-sm font-bold">Under-voltage</p>
+<p class="text-xs text-slate-500">Discharge limit</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-16 h-10 text-center bg-black/5 dark:bg-black/20 border-none rounded-lg font-bold text-primary focus:ring-1 focus:ring-primary" type="text" value="2.50"/>
+</div>
+</div>
+<!-- Read Only Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-white/50 dark:bg-white/5 border border-dashed border-slate-300 dark:border-slate-700 opacity-80">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">refresh</span>
+</div>
+<div>
+<p class="text-sm font-medium">Recovery Voltage</p>
+<p class="text-xs text-slate-500">Factory Locked</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-500 pr-4">3.40V</p>
+</div>
+</div>
+</section>
+<!-- Temperature Section -->
+<section>
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-xs font-bold tracking-[0.2em] text-primary uppercase">Temperature Cut-off</h3>
+<span class="text-[10px] text-slate-500 font-medium">UNIT: CELSIUS (°C)</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-4 rounded-xl bg-white dark:bg-card-dark border border-black/5 dark:border-white/5">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-orange-500 text-sm">thermometer_gain</span>
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">High Temp</p>
+</div>
+<div class="flex items-baseline gap-1">
+<input class="w-full text-2xl bg-transparent border-none p-0 font-bold text-slate-900 dark:text-white focus:ring-0" type="text" value="65"/>
+<span class="text-sm text-slate-500 font-bold">°C</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-card-dark border border-black/5 dark:border-white/5">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-blue-400 text-sm">thermometer_loss</span>
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">Low Temp</p>
+</div>
+<div class="flex items-baseline gap-1">
+<input class="w-full text-2xl bg-transparent border-none p-0 font-bold text-slate-900 dark:text-white focus:ring-0" type="text" value="-5"/>
+<span class="text-sm text-slate-500 font-bold">°C</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Balancing Logic Section -->
+<section>
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-xs font-bold tracking-[0.2em] text-primary uppercase">Balancing Logic</h3>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-card-dark border border-black/5 dark:border-white/5 space-y-6">
+<!-- Toggle Row -->
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold">Balance Always</p>
+<p class="text-xs text-slate-500">Maintain cells even when idle</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<!-- Toggle Row 2 (Checked) -->
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold">Balance Charging Only</p>
+<p class="text-xs text-slate-500">Prioritize efficiency</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- System Info -->
+<section class="pb-10">
+<div class="p-4 rounded-xl bg-primary/5 border border-primary/20 flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-primary/60">BMS Metadata</p>
+<p class="text-xs font-medium text-slate-400">FW: v2.4.1-stable | HW: REV_C_2023</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined">publish</span>
+                WRITE TO BMS
+            </button>
+<p class="text-center text-[10px] text-slate-500 mt-3 font-medium tracking-wide">CAUTION: WRONG PARAMETERS MAY DAMAGE CELLS</p>
+</div>
+</div>
+<!-- Tab Bar -->
+<div class="fixed bottom-0 left-0 right-0 hidden">
+<!-- Optional if needed for full app context -->
+</div>
+</body></html>

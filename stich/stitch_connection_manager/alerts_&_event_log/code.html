@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts &amp; Event Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00f5c8",
+                        "background-light": "#f0f0f0",
+                        "background-dark": "#0a0a0a",
+                        "card-dark": "#161616",
+                        "critical": "#EF4444",
+                        "warning": "#F97316",
+                        "info": "#3B82F6",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 245, 200, 0.1);
+            position: absolute;
+            top: 0;
+            z-index: 50;
+            pointer-events: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-primary selection:text-black">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center px-4 py-3 justify-between">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[24px]">bluetooth_connected</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight uppercase">Alerts &amp; Log</h1>
+<div class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-widest text-primary/80 font-semibold">SeaSmart Linked</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 dark:border-white/10 bg-white/5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">file_download</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-slate-200 dark:border-white/10 bg-white/5 text-slate-400">
+<span class="material-symbols-outlined text-[22px]">settings_input_component</span>
+</button>
+</div>
+</div>
+<!-- Segmented Filter Bar -->
+<div class="px-4 py-3 border-t border-slate-200 dark:border-white/5">
+<div class="flex h-11 flex-1 items-center justify-center rounded-lg bg-slate-200/50 dark:bg-white/5 p-1 border border-slate-200 dark:border-white/10">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:text-black text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider transition-all">
+<span>All</span>
+<input checked="" class="invisible w-0" name="filter" type="radio" value="All"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded px-2 has-[:checked]:bg-critical has-[:checked]:text-white text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider transition-all">
+<span>Critical</span>
+<input class="invisible w-0" name="filter" type="radio" value="Critical"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded px-2 has-[:checked]:bg-warning has-[:checked]:text-white text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider transition-all">
+<span>Warning</span>
+<input class="invisible w-0" name="filter" type="radio" value="Warning"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded px-2 has-[:checked]:bg-info has-[:checked]:text-white text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider transition-all">
+<span>Info</span>
+<input class="invisible w-0" name="filter" type="radio" value="Info"/>
+</label>
+</div>
+</div>
+</header>
+<!-- Main Feed -->
+<main class="flex-1 overflow-y-auto px-4 py-4 space-y-3 custom-scrollbar">
+<!-- Log Entry: Critical (Active/Recent State) -->
+<div class="relative group bg-white dark:bg-card-dark border border-critical/40 dark:border-critical/30 rounded-lg p-4 transition-all hover:bg-critical/[0.02]">
+<div class="absolute -left-[1px] top-4 bottom-4 w-1 bg-critical rounded-full"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded bg-critical text-white">
+<span class="material-symbols-outlined text-[20px]">dangerous</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base leading-none uppercase tracking-tight">Cell 3 Over-Voltage</h3>
+<p class="text-critical text-[10px] font-bold mt-1 tracking-widest uppercase">Immediate Action Required</p>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<p class="text-slate-400 text-xs font-medium font-mono uppercase">10:42:15</p>
+<span class="material-symbols-outlined text-primary text-[14px]">sensors</span>
+</div>
+</div>
+<div class="bg-black/20 rounded p-2 mb-3 border border-white/5">
+<div class="flex justify-between items-baseline">
+<span class="text-slate-500 text-[10px] uppercase font-bold tracking-widest">Measured Value</span>
+<span class="text-critical font-bold font-mono text-lg">3.85V <span class="text-xs font-normal text-slate-500">/ 3.65V</span></span>
+</div>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">High voltage detected during charging cycle. Internal balancer bypassed due to thermal safety limits.</p>
+</div>
+<!-- Log Entry: Warning -->
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 rounded-lg p-4 hover:border-warning/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded bg-warning text-white">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base leading-none uppercase tracking-tight">High SOC Imbalance</h3>
+<p class="text-warning text-[10px] font-bold mt-1 tracking-widest uppercase">Maintenance Recommended</p>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<p class="text-slate-400 text-xs font-medium font-mono uppercase">10:35:02</p>
+<span class="material-symbols-outlined text-slate-600 text-[14px]">wifi</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-3">
+<div class="bg-black/20 rounded p-2 border border-white/5">
+<span class="block text-slate-500 text-[9px] uppercase font-bold tracking-tighter">Delta</span>
+<span class="text-white font-mono text-sm">15.2%</span>
+</div>
+<div class="bg-black/20 rounded p-2 border border-white/5">
+<span class="block text-slate-500 text-[9px] uppercase font-bold tracking-tighter">Pack SOC</span>
+<span class="text-white font-mono text-sm">82%</span>
+</div>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">Deviation between Cell 2 (Highest) and Cell 8 (Lowest) exceeds 10% safety threshold.</p>
+</div>
+<!-- Log Entry: Info (Charging) -->
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 rounded-lg p-4 opacity-80 hover:opacity-100 transition-all">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded bg-info text-white">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base leading-none uppercase tracking-tight">Charging Initialized</h3>
+<p class="text-info text-[10px] font-bold mt-1 tracking-widest uppercase">System Status Change</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-400 text-xs font-medium font-mono uppercase">10:20:44</p>
+</div>
+</div>
+<div class="bg-black/20 rounded p-2 mb-2 border border-white/5 flex items-center justify-between">
+<span class="text-white font-mono text-sm">Current: +25.4A</span>
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-info/20 text-info uppercase">CC Mode</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">BMS has entered constant current charging phase via SeaSmart interface.</p>
+</div>
+<!-- Log Entry: Warning (Thermal) -->
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 rounded-lg p-4 hover:border-warning/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded bg-warning text-white">
+<span class="material-symbols-outlined text-[20px]">thermostat</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base leading-none uppercase tracking-tight">Temp High Warning</h3>
+<p class="text-warning text-[10px] font-bold mt-1 tracking-widest uppercase">Environmental</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-400 text-xs font-medium font-mono uppercase">09:55:12</p>
+</div>
+</div>
+<div class="bg-black/20 rounded p-2 mb-2 border border-white/5 flex items-center justify-between">
+<span class="text-white font-mono text-sm">Probe B: 48°C</span>
+<span class="text-slate-500 font-mono text-xs">Limit: 45°C</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">Internal battery compartment ambient temperature rising. Fan cooling initiated.</p>
+</div>
+<!-- Log Entry: Info (Connection) -->
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-white/5 rounded-lg p-4 opacity-80 hover:opacity-100 transition-all">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded bg-slate-700 text-white">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base leading-none uppercase tracking-tight">Sync Completed</h3>
+<p class="text-slate-500 text-[10px] font-bold mt-1 tracking-widest uppercase">SeaSmart Protocol</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-400 text-xs font-medium font-mono uppercase">08:00:01</p>
+</div>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">Nightly diagnostic dump successfully synchronized to cloud storage. Integrity check passed.</p>
+</div>
+<!-- Load More Trigger -->
+<div class="flex flex-col items-center py-6 gap-2">
+<div class="w-10 h-[1px] bg-slate-800"></div>
+<p class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">End of Log (Last 24h)</p>
+<button class="mt-2 text-primary text-xs font-bold uppercase tracking-widest border border-primary/30 rounded px-4 py-2 bg-primary/5">Load Historical</button>
+</div>
+</main>
+<!-- Bottom Navigation (Simplified for App Context) -->
+<nav class="bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-white/10 px-6 py-4">
+<div class="flex justify-between items-center max-w-sm mx-auto">
+<button class="text-slate-500 hover:text-primary flex flex-col items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Status</span>
+</button>
+<button class="text-slate-500 hover:text-primary flex flex-col items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Cells</span>
+</button>
+<button class="text-primary flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[24px] fill-current">assignment_late</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Alerts</span>
+</button>
+<button class="text-slate-500 hover:text-primary flex flex-col items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Config</span>
+</button>
+</div>
+</nav>
+<!-- Visual Polish: Vignette/Scanning Overlay -->
+<div class="fixed inset-0 pointer-events-none z-[60] shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]"></div>
+</body></html>

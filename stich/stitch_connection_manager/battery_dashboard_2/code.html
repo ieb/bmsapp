@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Battery Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007e8c",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2123",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .gauge-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .technical-border {
+            border: 1px solid rgba(0, 126, 140, 0.2);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 126, 140, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-[430px] mx-auto shadow-2xl border-x border-slate-200 dark:border-slate-800">
+<!-- TopAppBar / Status Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark px-6 py-4 justify-between border-b border-slate-200 dark:border-slate-800/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">menu</span>
+</div>
+<div class="flex-1 text-center">
+<h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Battery Dashboard</h2>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+<p class="text-primary text-[10px] font-bold uppercase tracking-tighter">BLE Connected</p>
+</div>
+</div>
+<!-- Main Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto pb-24 scrollbar-hide">
+<!-- Central SoC Gauge Section -->
+<div class="relative flex flex-col items-center justify-center py-10 px-6">
+<div class="relative size-64 flex items-center justify-center">
+<!-- Gauge SVG -->
+<svg class="absolute inset-0 size-full" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-slate-200 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="6"></circle>
+<!-- Progress Circle (85%) -->
+<circle class="text-primary stroke-current gauge-ring" cx="50" cy="50" fill="transparent" r="42" stroke-linecap="round" stroke-width="6" style="stroke-dasharray: 263.89; stroke-dashoffset: 39.58;"></circle>
+</svg>
+<div class="text-center z-10">
+<span class="text-6xl font-bold tracking-tighter glow-text leading-none">85<span class="text-3xl font-light opacity-60">%</span></span>
+<p class="text-xs font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mt-2">SoC</p>
+</div>
+<!-- Small Decorative Dots -->
+<div class="absolute inset-0 size-full pointer-events-none">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 w-1 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="mt-6 flex flex-col items-center gap-1">
+<p class="text-sm font-medium text-slate-600 dark:text-slate-300">4h 20m until discharge</p>
+<div class="flex gap-4 mt-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">thermostat</span>
+<span class="text-xs font-bold">28.4°C</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">health_and_safety</span>
+<span class="text-xs font-bold">100% SOH</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="px-6 grid grid-cols-1 gap-4">
+<div class="grid grid-cols-2 gap-4">
+<!-- Voltage Card -->
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-[#1b2a2c] technical-border shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Voltage</p>
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+</div>
+<p class="text-2xl font-bold leading-tight">53.28 <span class="text-sm font-normal opacity-60">V</span></p>
+<div class="flex items-center gap-1 text-[#0bda54] text-xs font-bold">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+<span>+0.12V</span>
+</div>
+</div>
+<!-- Current Card -->
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-[#1b2a2c] technical-border shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Current</p>
+<span class="material-symbols-outlined text-[#fa5c38] text-[20px]">electric_bolt</span>
+</div>
+<p class="text-2xl font-bold leading-tight">-12.50 <span class="text-sm font-normal opacity-60">A</span></p>
+<div class="flex items-center gap-1 text-[#fa5c38] text-xs font-bold">
+<span class="material-symbols-outlined text-[12px]">trending_down</span>
+<span>Discharging</span>
+</div>
+</div>
+</div>
+<!-- Power Card (Full Width) -->
+<div class="flex items-center justify-between rounded-xl p-5 bg-white dark:bg-[#1b2a2c] technical-border shadow-sm">
+<div class="flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Real-time Power</p>
+<p class="text-3xl font-bold leading-tight">665.0 <span class="text-base font-normal opacity-60">W</span></p>
+</div>
+<div class="size-16 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">speed</span>
+</div>
+</div>
+</div>
+<!-- TextGrid Section -->
+<div class="grid grid-cols-2 gap-4 px-6 mt-4">
+<div class="flex gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/20 p-4 items-center">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">autorenew</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider leading-none mb-1">Cycle Count</h2>
+<p class="text-sm font-bold">142 <span class="text-[10px] font-normal opacity-60">Cycles</span></p>
+</div>
+</div>
+<div class="flex gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/20 p-4 items-center">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider leading-none mb-1">Uptime</h2>
+<p class="text-sm font-bold">24 <span class="text-[10px] font-normal opacity-60">Days</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<div class="absolute bottom-0 w-full">
+<div class="flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0d1c1d] px-6 pb-8 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+<a class="flex flex-1 flex-col items-center gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1">dashboard</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Dash</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">battery_charging_full</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Cells</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">analytics</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">History</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">settings</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Setup</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

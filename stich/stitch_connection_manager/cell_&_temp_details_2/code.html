@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cell &amp; Temp Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007e8c",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2123",
+                        "danger": "#fa5c38",
+                        "success": "#0bda54",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .cell-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 400px) {
+            .cell-grid {
+                gap: 16px;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4 flex items-center justify-between border-b border-primary/10">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Cell &amp; Temp Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</div>
+</header>
+<main class="p-4 max-w-lg mx-auto pb-24">
+<!-- Summary Dashboard -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<p class="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mb-1">Avg Voltage</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold">3.321</span>
+<span class="text-sm font-medium text-slate-400">V</span>
+</div>
+<div class="flex items-center gap-1 mt-2 text-success">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span class="text-xs font-bold">+0.001</span>
+</div>
+</div>
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-danger/5 rounded-full -mr-8 -mt-8"></div>
+<p class="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mb-1">Delta Max-Min</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold">0.015</span>
+<span class="text-sm font-medium text-slate-400">V</span>
+</div>
+<div class="flex items-center gap-1 mt-2 text-danger">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span class="text-xs font-bold">Unbalanced</span>
+</div>
+</div>
+</div>
+<!-- Temperatures Section -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Thermal Probes</h3>
+<div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-lg text-[10px] font-bold">
+<span class="px-2 py-1 bg-primary text-white rounded-md">°C</span>
+<span class="px-2 py-1 text-slate-500">°F</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-primary mb-2">thermostat</span>
+<span class="text-lg font-bold">25.4°</span>
+<span class="text-[10px] text-slate-400 font-bold uppercase">T1 Internal</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-primary mb-2">ac_unit</span>
+<span class="text-lg font-bold">22.1°</span>
+<span class="text-[10px] text-slate-400 font-bold uppercase">T2 Ambient</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-danger mb-2">memory</span>
+<span class="text-lg font-bold">38.9°</span>
+<span class="text-[10px] text-slate-400 font-bold uppercase">T3 MOSFET</span>
+</div>
+</div>
+</section>
+<!-- Cell Voltage Grid -->
+<section>
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Cell Voltages (16S)</h3>
+<div class="flex items-center gap-2 text-[10px] font-bold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    ACTIVE BALANCING
+                </div>
+</div>
+<div class="cell-grid">
+<!-- Cell 01 - Highest -->
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border-2 border-primary shadow-lg relative group">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-primary uppercase">Cell 01</p>
+<p class="text-xl font-bold">3.335<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">keyboard_double_arrow_up</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">MAX</span>
+<span class="material-symbols-outlined text-sm text-primary">balance</span>
+</div>
+</div>
+<!-- Cell 02 -->
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Cell 02</p>
+<p class="text-xl font-bold">3.321<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-xl">battery_full</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 rounded-full" style="width: 88%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">88%</span>
+</div>
+</div>
+<!-- Cell 03 - Lowest -->
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border-2 border-danger/40 shadow-sm relative">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-danger uppercase">Cell 03</p>
+<p class="text-xl font-bold">3.320<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+<span class="material-symbols-outlined text-danger text-xl">keyboard_double_arrow_down</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-danger/60 rounded-full" style="width: 84%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">MIN</span>
+<span class="material-symbols-outlined text-sm text-primary">balance</span>
+</div>
+</div>
+<!-- Cell 04 -->
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Cell 04</p>
+<p class="text-xl font-bold">3.321<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600 text-xl">battery_full</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 rounded-full" style="width: 87%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">87%</span>
+</div>
+</div>
+<!-- Repeat Cells with different data -->
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Cell 05</p>
+<p class="text-xl font-bold">3.322<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 rounded-full" style="width: 90%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">90%</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Cell 06</p>
+<p class="text-xl font-bold">3.323<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 rounded-full" style="width: 91%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">91%</span>
+</div>
+</div>
+<!-- Placeholder for more cells (7-16) -->
+<div class="p-4 rounded-xl bg-slate-100/50 dark:bg-slate-800/20 border border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center min-h-[110px]">
+<p class="text-[10px] font-bold text-slate-400">CELLS 07-16</p>
+<span class="material-symbols-outlined text-slate-400 text-lg">more_horiz</span>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Cell 16</p>
+<p class="text-xl font-bold">3.321<span class="text-xs text-slate-400 ml-0.5">V</span></p>
+</div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-slate-500 rounded-full" style="width: 88%;"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[10px] font-bold text-slate-400">88%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Info -->
+<footer class="mt-12 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold uppercase text-primary/80">BLE Connected • Last Update: 12:45:03</span>
+</div>
+</footer>
+</main>
+<!-- Bottom Navigation (Mobile Native feel) -->
+<nav class="fixed bottom-0 left-0 right-0 h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 flex items-center justify-around px-6 pb-4">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">OVERVIEW</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">battery_charging_full</span>
+<span class="text-[10px] font-bold">CELLS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">CONFIG</span>
+</button>
+</nav>
+</body></html>

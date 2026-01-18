@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BMS Settings &amp; Limits</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#107070",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#121416",
+                        "card-dark": "#1c1f21",
+                        "border-dark": "#2d3235"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d3235;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 ios-blur border-b border-slate-200 dark:border-border-dark px-4 py-3">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">BMS Settings</h1>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-[10px] uppercase tracking-widest font-bold text-primary">Live via BLE</p>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[24px]">bluetooth_connected</span>
+</button>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-32">
+<!-- Voltage Protection Section -->
+<section class="mt-6">
+<div class="px-5 mb-3 flex items-center justify-between">
+<h2 class="text-[11px] font-extrabold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">Voltage Protection</h2>
+<span class="text-[10px] bg-slate-200 dark:bg-white/10 px-2 py-0.5 rounded text-slate-500 dark:text-slate-400">LiFePo4 4S</span>
+</div>
+<div class="space-y-2 px-4">
+<!-- High Voltage Item -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary size-12 shrink-0">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1">
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">High Cut-off</p>
+<span class="material-symbols-outlined text-xs text-slate-400 cursor-help">info</span>
+</div>
+<p class="text-xl font-bold mt-0.5">3.65<span class="text-sm font-medium text-slate-400"> V/Cell</span></p>
+</div>
+<div class="px-2 py-1 bg-slate-100 dark:bg-white/5 rounded text-[10px] font-bold text-slate-400 uppercase">Read Only</div>
+</div>
+<!-- Low Voltage Item -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 size-12 shrink-0">
+<span class="material-symbols-outlined">battery_low</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1">
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Low Cut-off</p>
+<span class="material-symbols-outlined text-xs text-slate-400 cursor-help">info</span>
+</div>
+<p class="text-xl font-bold mt-0.5">2.50<span class="text-sm font-medium text-slate-400"> V/Cell</span></p>
+</div>
+<div class="px-2 py-1 bg-slate-100 dark:bg-white/5 rounded text-[10px] font-bold text-slate-400 uppercase">Read Only</div>
+</div>
+<!-- Recovery Voltage -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary size-12 shrink-0">
+<span class="material-symbols-outlined">restart_alt</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1">
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Recovery</p>
+<span class="material-symbols-outlined text-xs text-slate-400 cursor-help">info</span>
+</div>
+<p class="text-xl font-bold mt-0.5">3.40<span class="text-sm font-medium text-slate-400"> V/Cell</span></p>
+</div>
+<div class="px-2 py-1 bg-slate-100 dark:bg-white/5 rounded text-[10px] font-bold text-slate-400 uppercase">Read Only</div>
+</div>
+</div>
+</section>
+<!-- Thermal & Current Section -->
+<section class="mt-8">
+<div class="px-5 mb-3">
+<h2 class="text-[11px] font-extrabold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">Thermal &amp; Current Limits</h2>
+</div>
+<div class="grid grid-cols-2 gap-3 px-4">
+<div class="bg-white dark:bg-card-dark border-l-4 border-l-primary border border-slate-200 dark:border-border-dark p-4 rounded-xl">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary text-xl">thermostat</span>
+<span class="material-symbols-outlined text-xs text-slate-400">info</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Charge Max</p>
+<p class="text-lg font-bold">45°C</p>
+</div>
+<div class="bg-white dark:bg-card-dark border-l-4 border-l-orange-500 border border-slate-200 dark:border-border-dark p-4 rounded-xl">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-orange-500 text-xl">ac_unit</span>
+<span class="material-symbols-outlined text-xs text-slate-400">info</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Charge Min</p>
+<p class="text-lg font-bold">0°C</p>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-4 rounded-xl col-span-2 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-slate-100 dark:bg-white/5 p-2 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Max Discharge Current</p>
+<p class="text-lg font-bold">150.0A</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">lock</span>
+</div>
+</div>
+</section>
+<!-- Hardware Protection Section -->
+<section class="mt-8">
+<div class="px-5 mb-3">
+<h2 class="text-[11px] font-extrabold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">Hardware Protection</h2>
+</div>
+<div class="mx-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl divide-y divide-slate-100 dark:divide-border-dark overflow-hidden">
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">timer</span>
+<p class="text-sm font-medium">Short Circuit Delay</p>
+</div>
+<p class="text-sm font-bold">400ms</p>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">balance</span>
+<p class="text-sm font-medium">Balance Start</p>
+</div>
+<p class="text-sm font-bold">3.40V</p>
+</div>
+</div>
+</section>
+<!-- Notification Control Footer -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto p-4 pointer-events-none">
+<div class="bg-primary text-white p-5 rounded-2xl shadow-2xl flex items-center justify-between pointer-events-auto">
+<div class="flex items-center gap-4">
+<div class="bg-white/20 p-2.5 rounded-xl">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<h4 class="font-bold text-base leading-none">Alert Notifications</h4>
+<p class="text-xs text-white/70 mt-1">Push alerts on limit breach</p>
+</div>
+</div>
+<!-- iOS Style Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-black/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white/30"></div>
+</label>
+</div>
+</div>
+</main>
+<!-- Visual Gradient Decoration (Subtle) -->
+<div class="fixed top-0 right-0 -z-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed bottom-20 left-0 -z-10 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl pointer-events-none"></div>
+</body></html>

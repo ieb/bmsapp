@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#007e8c",
+              "background-light": "#f5f8f8",
+              "background-dark": "#0f2123",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .signal-bar {
+            width: 3px;
+            border-radius: 1px;
+            background-color: #3a4e50;
+        }
+        .signal-bar.active {
+            background-color: #007e8c;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 ios-blur border-b border-slate-200 dark:border-white/5">
+<div class="flex items-center p-4 pb-3 justify-between max-w-md mx-auto w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">settings_input_antenna</span>
+<h1 class="text-xl font-bold tracking-tight">Connection</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-white/10 text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+</nav>
+<main class="flex-1 max-w-md mx-auto w-full px-4 pt-4 pb-24 space-y-6">
+<!-- Connection Type Selector -->
+<div class="bg-slate-200 dark:bg-white/5 p-1 rounded-xl flex">
+<label class="flex-1 cursor-pointer group">
+<input checked="" class="hidden peer" name="conn_type" type="radio"/>
+<div class="py-2.5 text-center rounded-lg text-sm font-semibold transition-all peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-primary dark:peer-checked:text-white text-slate-500 dark:text-slate-400">
+                    Direct Bluetooth
+                </div>
+</label>
+<label class="flex-1 cursor-pointer group">
+<input class="hidden peer" name="conn_type" type="radio"/>
+<div class="py-2.5 text-center rounded-lg text-sm font-semibold transition-all peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-primary dark:peer-checked:text-white text-slate-500 dark:text-slate-400">
+                    Remote Network
+                </div>
+</label>
+</div>
+<!-- Section: Bluetooth Discovery -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-primary/70">Nearby BMS Units</h3>
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-[10px] font-mono text-primary uppercase">Scanning</span>
+</div>
+</div>
+<div class="space-y-3">
+<!-- Device Card 1 -->
+<div class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-xl p-4 flex items-center justify-between group active:border-primary/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined">bluetooth</span>
+</div>
+<div>
+<p class="font-bold text-base">BMS-Unit-01</p>
+<div class="flex items-center gap-2 mt-0.5">
+<div class="flex items-end gap-0.5 h-3">
+<div class="signal-bar active h-1.5"></div>
+<div class="signal-bar active h-2.5"></div>
+<div class="signal-bar active h-3.5"></div>
+<div class="signal-bar h-4"></div>
+</div>
+<p class="text-[11px] font-mono text-slate-500 dark:text-slate-400">-65 dBm | 00:1A:7D:DA:71:13</p>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all active:scale-95">
+                        Connect
+                    </button>
+</div>
+<!-- Device Card 2 -->
+<div class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">bluetooth</span>
+</div>
+<div>
+<p class="font-bold text-base">Smart-LiFePo4-X</p>
+<div class="flex items-center gap-2 mt-0.5">
+<div class="flex items-end gap-0.5 h-3">
+<div class="signal-bar active h-1.5"></div>
+<div class="signal-bar h-2.5"></div>
+<div class="signal-bar h-3.5"></div>
+<div class="signal-bar h-4"></div>
+</div>
+<p class="text-[11px] font-mono text-slate-500 dark:text-slate-400">-82 dBm | 00:1A:7D:DA:82:44</p>
+</div>
+</div>
+</div>
+<button class="bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-white text-sm font-bold py-2 px-4 rounded-lg">
+                        Connect
+                    </button>
+</div>
+</div>
+</section>
+<!-- Section: Remote Configuration -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-primary/70 text-primary/70">Seasmary Cloud Link</h3>
+</div>
+<div class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-xl p-5 space-y-5">
+<div class="space-y-2">
+<label class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Server endpoint</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-xl">dns</span>
+<input class="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-lg py-3 pl-11 pr-4 text-sm font-mono focus:ring-1 focus:ring-primary focus:border-primary outline-none text-primary" placeholder="https://api.seasmary.com/v1" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-2">
+<label class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Access Token</label>
+<input class="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 text-sm font-mono focus:ring-1 focus:ring-primary outline-none" type="password" value="••••••••••••"/>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">CAN Node ID</label>
+<input class="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 text-sm font-mono focus:ring-1 focus:ring-primary outline-none" placeholder="0x0F2" type="text"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-xl">cloud_sync</span>
+                    Establish Connection
+                </button>
+</div>
+</section>
+<!-- Footer Help -->
+<div class="px-4 py-2 bg-primary/5 rounded-lg border border-primary/10 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Ensure your BMS unit is within 5 meters for Bluetooth pairing, or that the gateway is reporting to the Seasmary endpoint.
+            </p>
+</div>
+</main>
+<!-- Bottom Tab Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 ios-blur border-t border-slate-200 dark:border-white/5 pb-8 pt-2 px-6">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">battery_charging_full</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Cells</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[28px] fill-[1]">link</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Connect</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">History</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Setup</span>
+</button>
+</div>
+</nav>
+</body></html>

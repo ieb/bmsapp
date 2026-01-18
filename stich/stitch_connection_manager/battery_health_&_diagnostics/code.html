@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f0f2f4",
+                        "background-dark": "#17191c",
+                        "card-dark": "#1a2232",
+                        "accent-green": "#4F9C5F",
+                        "accent-red": "#BF5D5D",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        .radial-gauge {
+            background: conic-gradient(from 180deg, #195de6 0%, #195de6 98%, #344465 98%, #344465 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen flex justify-center">
+<div class="relative flex h-full w-full max-w-[480px] flex-col bg-background-light dark:bg-background-dark overflow-x-hidden pb-10">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-800/50">
+<div class="text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">chevron_left</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">Battery Health</h2>
+<div class="flex w-12 items-center justify-end gap-2">
+<span class="text-[10px] font-bold text-primary bg-primary/20 px-1.5 py-0.5 rounded">BLE</span>
+<span class="material-symbols-outlined text-primary text-sm">hub</span>
+</div>
+</div>
+<!-- Main Health Gauge -->
+<div class="flex flex-col items-center justify-center py-10 px-4 relative">
+<div class="relative flex items-center justify-center size-48 rounded-full border-[12px] border-[#344465]">
+<!-- Simulated Conic Gradient Gauge -->
+<div class="absolute inset-0 rounded-full border-[12px] border-primary" style="clip-path: polygon(50% 50%, -50% -50%, 150% -50%, 150% 150%, -50% 150%, -50% 10%);"></div>
+<div class="flex flex-col items-center">
+<h1 class="text-white tracking-tight text-5xl font-bold leading-none font-display">98%</h1>
+<p class="text-accent-green text-xs font-bold uppercase tracking-widest mt-2">Optimal</p>
+</div>
+</div>
+<p class="text-[#93a5c8] text-sm font-normal leading-normal mt-6 text-center font-display">State of Health (SoH)</p>
+<p class="text-[#5a6b8a] text-[10px] mt-1 italic">Last sync: 2 minutes ago via SeaSmart</p>
+</div>
+<!-- Metric Cards Grid -->
+<div class="grid grid-cols-2 gap-3 px-4 mb-6">
+<!-- Cycle Count Card -->
+<div class="flex flex-col gap-2 rounded bg-card-dark p-4 shadow-lg border border-white/5">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-xl">rebase_edit</span>
+<span class="text-[10px] text-[#93a5c8] uppercase font-bold tracking-tighter">Usage</span>
+</div>
+<div class="mt-2">
+<p class="text-white text-2xl font-bold leading-tight font-display">142</p>
+<p class="text-[#93a5c8] text-xs font-normal leading-normal font-display">Cycle Count</p>
+</div>
+</div>
+<!-- Battery Age Card -->
+<div class="flex flex-col gap-2 rounded bg-card-dark p-4 shadow-lg border border-white/5">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+<span class="text-[10px] text-[#93a5c8] uppercase font-bold tracking-tighter">Service</span>
+</div>
+<div class="mt-2">
+<p class="text-white text-2xl font-bold leading-tight font-display">412<span class="text-sm ml-1 font-normal opacity-70">d</span></p>
+<p class="text-[#93a5c8] text-xs font-normal leading-normal font-display">Battery Age</p>
+</div>
+</div>
+</div>
+<!-- Internal Resistance Section -->
+<div class="px-4 mb-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white text-sm font-bold uppercase tracking-widest font-display">Cell Resistance (mΩ)</h3>
+<span class="text-[10px] text-primary font-bold">LIFEP04 4S CONFIG</span>
+</div>
+<div class="bg-card-dark rounded-xl overflow-hidden border border-white/5">
+<!-- Cell List -->
+<div class="flex items-center justify-between p-4 border-b border-white/5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-accent-green"></div>
+<span class="text-sm font-medium text-white/80">Cell 01</span>
+</div>
+<span class="text-white font-bold font-mono text-base">0.85 <span class="text-[10px] font-normal opacity-50">mΩ</span></span>
+</div>
+<div class="flex items-center justify-between p-4 border-b border-white/5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-accent-green"></div>
+<span class="text-sm font-medium text-white/80">Cell 02</span>
+</div>
+<span class="text-white font-bold font-mono text-base">0.88 <span class="text-[10px] font-normal opacity-50">mΩ</span></span>
+</div>
+<div class="flex items-center justify-between p-4 border-b border-white/5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-accent-red"></div>
+<span class="text-sm font-medium text-white/80">Cell 03</span>
+</div>
+<span class="text-white font-bold font-mono text-base">1.12 <span class="text-[10px] font-normal opacity-50">mΩ</span></span>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-accent-green"></div>
+<span class="text-sm font-medium text-white/80">Cell 04</span>
+</div>
+<span class="text-white font-bold font-mono text-base">0.86 <span class="text-[10px] font-normal opacity-50">mΩ</span></span>
+</div>
+</div>
+</div>
+<!-- Predictive Life Banner -->
+<div class="px-4 mt-auto">
+<div class="bg-primary/10 border border-primary/30 rounded-xl p-5 flex items-center gap-4">
+<div class="bg-primary size-12 rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-2xl">timeline</span>
+</div>
+<div class="flex flex-col">
+<p class="text-[#93a5c8] text-[10px] font-bold uppercase tracking-wider">Predicted Remaining Life</p>
+<p class="text-white text-lg font-bold font-display leading-tight">6.4 Years <span class="text-xs font-normal opacity-60">/ 2,858 Cycles</span></p>
+<div class="mt-2 w-full h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Context Image -->
+<div class="p-4 mt-6">
+<div class="relative h-32 w-full rounded-xl overflow-hidden grayscale opacity-40">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Abstract technical circuitry and data grid pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfw1PSM8ZWCU6YCjDFDJSsSf6D1eNzNMf0Bz6s378BOfFJQu_0U06N_IpXhNNBAdmA6TB3ALB_sFfesmt_HOf_ngMwkOdBuiavvhD6Es8u3e6wLf8osqz_nOudxoypGP7uEKSN2haZXdoz_oIgtNzeT-AOgC1zw5dxP8qL5EY4HJ-f1PMpR2GkbbsF8zIy_VHDkqrDuoQbmOJ0wNHSl1VMAn3b7z0q0tregcqXJo1-nYg16g7KWFrTyjcMk-rkZornr9rntc4bX4R5");'>
+</div>
+</div>
+<p class="text-center text-[10px] text-[#5a6b8a] mt-4 uppercase tracking-[0.2em]">Diagnostic Mode • System ID: BATT-0094-LX</p>
+</div>
+</div>
+</body></html>

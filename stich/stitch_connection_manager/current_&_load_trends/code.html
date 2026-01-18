@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Current &amp; Load Trends - BMS Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#14ff6a",
+                        "danger": "#FF5555",
+                        "background-light": "#f2f2f3",
+                        "background-dark": "#121216",
+                        "surface-dark": "#1c1c21",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .chart-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-lime {
+            filter: drop-shadow(0 0 4px #14ff6a);
+        }
+        .glow-red {
+            filter: drop-shadow(0 0 4px #FF5555);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 h-16">
+<button class="size-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-lg font-bold tracking-tight">Current &amp; Load Trends</h1>
+<div class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-widest font-medium opacity-60">SeaSmart HTTP Connected</span>
+</div>
+</div>
+<button class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">bluetooth_connected</span>
+</button>
+</div>
+</header>
+<main class="max-w-md mx-auto p-4 space-y-6">
+<!-- Time Range Selector -->
+<div class="flex p-1 bg-slate-200 dark:bg-surface-dark rounded-xl shadow-inner">
+<button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-white dark:bg-background-dark shadow-sm text-primary">1H</button>
+<button class="flex-1 py-2 text-sm font-semibold rounded-lg text-slate-500 dark:text-slate-400">6H</button>
+<button class="flex-1 py-2 text-sm font-semibold rounded-lg text-slate-500 dark:text-slate-400">12H</button>
+<button class="flex-1 py-2 text-sm font-semibold rounded-lg text-slate-500 dark:text-slate-400">24H</button>
+</div>
+<!-- Analytics Chart Section -->
+<section class="bg-white dark:bg-surface-dark rounded-2xl p-4 shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Live Current</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold tracking-tighter text-primary">+12.4</span>
+<span class="text-xl font-medium opacity-60">Amps</span>
+</div>
+</div>
+<div class="text-right">
+<div class="flex items-center justify-end gap-2 text-primary text-xs font-bold">
+<span>CHARGING</span>
+<span class="material-symbols-outlined text-sm">bolt</span>
+</div>
+<p class="text-[10px] opacity-40 mt-1 uppercase">Updates every 2s</p>
+</div>
+</div>
+<!-- Dual-Direction Line Chart Area -->
+<div class="relative h-64 w-full chart-grid rounded-lg border border-slate-100 dark:border-slate-800/50 mb-4">
+<!-- Y-Axis Labels -->
+<div class="absolute left-1 top-0 bottom-0 flex flex-col justify-between text-[10px] font-mono opacity-40 py-1 pointer-events-none">
+<span>+50A</span>
+<span>+25A</span>
+<span class="text-primary font-bold">0.0A</span>
+<span>-25A</span>
+<span>-50A</span>
+</div>
+<!-- Zero Line -->
+<div class="absolute top-1/2 left-0 right-0 h-px bg-primary/30 z-10"></div>
+<!-- SVG Chart Content -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 200">
+<!-- Discharging Line (Negative) -->
+<path class="glow-red opacity-80" d="M0 100 Q 50 140, 100 120 T 200 160 T 300 130 T 400 110" fill="none" stroke="#FF5555" stroke-width="2.5"></path>
+<!-- Charging Line (Positive) -->
+<path class="glow-lime" d="M0 100 Q 50 60, 100 80 T 200 40 T 300 70 T 400 30" fill="none" stroke="#14ff6a" stroke-width="3"></path>
+<!-- Vertical Scrubber line (Example position) -->
+<line stroke="white" stroke-dasharray="4" stroke-opacity="0.2" x1="320" x2="320" y1="0" y2="200"></line>
+<circle cx="320" cy="58" fill="#14ff6a" r="4"></circle>
+</svg>
+</div>
+<!-- Chart Legend -->
+<div class="flex justify-center gap-6 pb-2">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary shadow-[0_0_8px_#14ff6a]"></span>
+<span class="text-xs font-medium opacity-70">Charging</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-danger shadow-[0_0_8px_#FF5555]"></span>
+<span class="text-xs font-medium opacity-70">Discharging</span>
+</div>
+</div>
+</section>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Total Charged Card -->
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-5 rounded-2xl relative overflow-hidden group">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl text-primary/10 rotate-12 group-hover:rotate-0 transition-transform">add_circle</span>
+<p class="text-xs font-bold uppercase tracking-widest text-primary/60 mb-2">Total Charged</p>
+<div class="space-y-1">
+<h3 class="text-2xl font-bold tracking-tight">45.2 <span class="text-sm font-medium opacity-60">Ah</span></h3>
+<p class="text-xs font-medium text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +1.2 Ah vs prev.
+                    </p>
+</div>
+</div>
+<!-- Total Discharged Card -->
+<div class="bg-danger/5 dark:bg-danger/10 border border-danger/20 p-5 rounded-2xl relative overflow-hidden group">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl text-danger/10 -rotate-12 group-hover:rotate-0 transition-transform">remove_circle</span>
+<p class="text-xs font-bold uppercase tracking-widest text-danger/60 mb-2">Total Load</p>
+<div class="space-y-1">
+<h3 class="text-2xl font-bold tracking-tight">12.8 <span class="text-sm font-medium opacity-60">Ah</span></h3>
+<p class="text-xs font-medium text-danger flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                        -0.5 Ah vs prev.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Connection Details Section -->
+<section class="space-y-3">
+<h3 class="text-sm font-bold uppercase tracking-widest opacity-40 px-1">Network &amp; Telemetry</h3>
+<div class="bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 p-4 border-b border-slate-100 dark:border-slate-800/50">
+<div class="size-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">SeaSmart Gateway</p>
+<p class="text-xs opacity-50">192.168.1.142</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-mono font-bold text-primary">STABLE</p>
+<p class="text-[10px] opacity-40 uppercase">Latency: 42ms</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4">
+<div class="size-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">cell_tower</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Cloud Sync</p>
+<p class="text-xs opacity-50">Last synced 4 mins ago</p>
+</div>
+<button class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-bold uppercase tracking-tighter">Sync Now</button>
+</div>
+</div>
+</section>
+<!-- Live Status Footer Badge -->
+<div class="flex justify-center pt-4 pb-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-200/50 dark:bg-surface-dark/50 rounded-full border border-slate-300 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm opacity-60">info</span>
+<span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Battery ID: LiFePo4-V4-9921</span>
+</div>
+</div>
+</main>
+<!-- Navigation Tab Bar (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 pb-6 pt-2">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined leading-none" style="font-variation-settings: 'FILL' 1">insights</span>
+<span class="text-[10px] font-bold uppercase">Trends</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined">battery_charging_full</span>
+<span class="text-[10px] font-bold uppercase">Cells</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase">Config</span>
+</button>
+</div>
+</nav>
+</body></html>
